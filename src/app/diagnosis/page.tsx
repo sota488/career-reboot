@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { questions, ratingDescriptions, ratingLabels, type DiagnosisCategory } from "./questions";
+import { questions, ratingDescriptions, type DiagnosisCategory } from "./questions";
 
 const categoryLabels: Record<DiagnosisCategory, string> = {
   recovery: "回復度",
@@ -12,6 +12,8 @@ const categoryLabels: Record<DiagnosisCategory, string> = {
   futureOrientation: "未来志向度",
   actionReadiness: "行動準備度",
 };
+
+const ratingCircleSizes = ["h-4 w-4", "h-5 w-5", "h-6 w-6", "h-5 w-5", "h-4 w-4"] as const;
 
 function resolveProfile(categoryScores: Record<DiagnosisCategory, number>) {
   const recoveryScore = categoryScores.recovery;
@@ -101,20 +103,20 @@ export default function DiagnosisPage() {
         <p className="text-sm font-medium text-slate-500">20問 / 5段階評価</p>
       </header>
 
-      <section className="py-14 lg:py-20">
+      <section className="py-8 sm:py-14 lg:py-20">
         <div className="max-w-2xl space-y-4">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
             休職後の現在地診断
           </span>
-          <h1 className="font-[var(--font-space-grotesk)] text-4xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+          <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
             今の自分に合う再スタートの形を見つける
           </h1>
-          <p className="text-lg leading-8 text-slate-600">
+          <p className="hidden text-lg leading-8 text-slate-600 sm:block">
             感情や状態を確認する20の質問に答えながら、あなたの現在地を丁寧に見つめ直します。無理のないペースで、1問ずつ進められます。
           </p>
         </div>
 
-        <div className="mt-10 rounded-[1.75rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur">
+        <div className="mt-6 rounded-[1.75rem] border border-white/80 bg-white/85 p-4 shadow-sm shadow-slate-900/5 backdrop-blur sm:mt-10 sm:p-6">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="w-full">
               <div className="mb-3 flex items-center justify-between">
@@ -134,13 +136,13 @@ export default function DiagnosisPage() {
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
                 Q{String(currentQuestion.id).padStart(2, "0")} / {questions.length}
               </p>
-              <h2 className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
+              <h2 className="mt-2 font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950 sm:text-3xl">
                 {currentQuestion.prompt}
               </h2>
             </div>
           </div>
 
-          <div className="mt-8">
+          <div className="mt-6 sm:mt-8">
             <div className="flex items-center justify-between text-sm text-slate-500">
               <span>進捗 {currentIndex + 1} / {questions.length}</span>
               <span>回答済み {answeredCount} / {questions.length}</span>
@@ -153,26 +155,35 @@ export default function DiagnosisPage() {
             </div>
           </div>
 
-          <div className="mt-8 grid gap-3 md:grid-cols-5">
-            {ratingLabels.map((label, index) => {
+          <div className="mt-6 rounded-[1.5rem] border border-slate-200 bg-white px-4 py-4 sm:mt-8">
+            <div className="flex items-center justify-between gap-3 text-xs font-medium text-slate-500 sm:text-sm">
+              <span className="truncate">{ratingDescriptions[0]}</span>
+              <span className="truncate text-right">{ratingDescriptions[4]}</span>
+            </div>
+            <div className="mt-3 grid grid-cols-5 gap-2">
+            {ratingDescriptions.map((description, index) => {
               const value = index + 1;
               const active = currentAnswer === value;
 
               return (
                 <button
-                  key={label}
+                  key={description}
                   type="button"
                   onClick={() => handleSelect(value)}
-                  className={`rounded-[1.5rem] border px-4 py-5 text-left transition ${active ? "border-sky-500 bg-sky-50 text-sky-950 shadow-sm shadow-sky-900/5" : "border-slate-200 bg-white text-slate-700 hover:border-slate-300 hover:bg-slate-50"}`}
+                  aria-label={`${value}: ${description}`}
+                  className={`inline-flex h-12 min-h-[48px] items-center justify-center rounded-2xl border transition ${active ? "border-sky-600 bg-sky-600 shadow-sm shadow-sky-900/10" : "border-slate-300 bg-white hover:border-sky-400 hover:bg-sky-50"}`}
                 >
-                  <span className="text-2xl font-semibold">{label}</span>
-                  <span className="mt-2 block text-sm leading-6">{ratingDescriptions[index]}</span>
+                  <span
+                    className={`${ratingCircleSizes[index]} rounded-full border-2 transition ${active ? "border-white bg-white/90" : "border-slate-400 bg-white"}`}
+                    aria-hidden
+                  />
                 </button>
               );
             })}
+            </div>
           </div>
 
-          <div className="mt-8 rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5">
+          <div className="mt-8 hidden rounded-[1.5rem] border border-slate-200 bg-slate-50 px-5 py-5 sm:block">
             <div className="flex gap-3 overflow-x-auto pb-1 md:grid md:grid-cols-5 md:overflow-visible md:pb-0">
             {(Object.keys(categoryLabels) as DiagnosisCategory[]).map((category) => {
               const categoryAnswerCount = questions.filter((question, index) => question.category === category && answers[index] !== null).length;
@@ -187,7 +198,7 @@ export default function DiagnosisPage() {
             </div>
           </div>
 
-          <div className="mt-8 rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-sm text-slate-600">
+          <div className="mt-6 rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-sm text-slate-600 sm:mt-8">
             {isLastQuestion ? "回答を選択すると、結果ページへ移動します。" : "回答を選択すると、自動で次の質問へ進みます。"}
           </div>
         </div>

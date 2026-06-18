@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { questions, ratingDescriptions, type DiagnosisCategory } from "./questions";
 
 const categoryLabels: Record<DiagnosisCategory, string> = {
@@ -43,12 +43,22 @@ export default function DiagnosisPage() {
   const router = useRouter();
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answers, setAnswers] = useState<Array<number | null>>(() => questions.map(() => null));
+  const [pendingSelection, setPendingSelection] = useState<number | null>(null);
+  const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const currentQuestion = questions[currentIndex];
   const currentAnswer = answers[currentIndex];
   const answeredCount = answers.filter((answer) => answer !== null).length;
   const progress = ((currentIndex + 1) / questions.length) * 100;
   const isLastQuestion = currentIndex === questions.length - 1;
+
+  useEffect(() => {
+    return () => {
+      if (transitionTimerRef.current) {
+        clearTimeout(transitionTimerRef.current);
+      }
+    };
+  }, []);
 
   const finishDiagnosis = (finalAnswers: Array<number | null>) => {
     const categoryScores = questions.reduce<Record<DiagnosisCategory, number>>(
@@ -82,16 +92,25 @@ export default function DiagnosisPage() {
   };
 
   const handleSelect = (value: number) => {
-    const nextAnswers = [...answers];
-    nextAnswers[currentIndex] = value;
-    setAnswers(nextAnswers);
-
-    if (isLastQuestion) {
-      finishDiagnosis(nextAnswers);
+    if (pendingSelection !== null) {
       return;
     }
 
-    setCurrentIndex((current) => current + 1);
+    const nextAnswers = [...answers];
+    nextAnswers[currentIndex] = value;
+    setAnswers(nextAnswers);
+    setPendingSelection(value);
+
+    transitionTimerRef.current = setTimeout(() => {
+      setPendingSelection(null);
+
+      if (isLastQuestion) {
+        finishDiagnosis(nextAnswers);
+        return;
+      }
+
+      setCurrentIndex((current) => current + 1);
+    }, 180);
   };
 
   return (
@@ -106,7 +125,7 @@ export default function DiagnosisPage() {
       <section className="py-8 sm:py-14 lg:py-20">
         <div className="max-w-2xl space-y-4">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職後の現在地診断
+            休職中の現在地診断
           </span>
           <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
             今の自分に合う再スタートの形を見つける
@@ -163,7 +182,7 @@ export default function DiagnosisPage() {
             <div className="mt-3 grid grid-cols-5 gap-2">
             {ratingDescriptions.map((description, index) => {
               const value = index + 1;
-              const active = currentAnswer === value;
+              const active = pendingSelection === value || (pendingSelection === null && currentAnswer === value);
 
               return (
                 <button
@@ -171,12 +190,18 @@ export default function DiagnosisPage() {
                   type="button"
                   onClick={() => handleSelect(value)}
                   aria-label={`${value}: ${description}`}
-                  className={`inline-flex h-12 min-h-[48px] items-center justify-center rounded-2xl border transition ${active ? "border-sky-600 bg-sky-600 shadow-sm shadow-sky-900/10" : "border-slate-300 bg-white hover:border-sky-400 hover:bg-sky-50"}`}
+                  disabled={pendingSelection !== null}
+                  className={`relative inline-flex h-12 min-h-[48px] items-center justify-center rounded-2xl border transition-all duration-150 ${active ? "scale-[0.98] border-sky-600 bg-sky-600 shadow-sm shadow-sky-900/10" : "border-slate-300 bg-white hover:border-sky-400 hover:bg-sky-50"} ${pendingSelection !== null ? "cursor-wait" : ""}`}
                 >
                   <span
                     className={`${ratingCircleSizes[index]} rounded-full border-2 transition ${active ? "border-white bg-white/90" : "border-slate-400 bg-white"}`}
                     aria-hidden
                   />
+                  {active ? (
+                    <span className="absolute right-1.5 top-1.5 inline-flex h-4 w-4 items-center justify-center rounded-full bg-white/95 text-[10px] font-bold text-sky-700">
+                      ✓
+                    </span>
+                  ) : null}
                 </button>
               );
             })}

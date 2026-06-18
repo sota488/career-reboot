@@ -15,7 +15,7 @@ const highlights = [
   },
 ];
 
-const signals = ["休職後の不安", "キャリアの棚卸し", "無理のない復帰", "転職の見極め"];
+const signals = ["休職中の不安", "キャリアの棚卸し", "無理のない再始動", "これからの選択肢"];
 
 export default function HomePage() {
   return (
@@ -38,7 +38,7 @@ export default function HomePage() {
       <section className="grid gap-8 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-24">
         <div className="space-y-8">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職後の現在地を、3分でやさしく確認する
+            休職中の現在地を、3分でやさしく確認する
           </span>
           <div className="space-y-5">
             <h1 className="max-w-3xl font-[var(--font-space-grotesk)] text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
@@ -46,7 +46,7 @@ export default function HomePage() {
               <span className="block text-sky-700">働き方と人生の再始動を。</span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Career Rebootは、休職後に先の見通しを失いやすい時期に寄り添う、人生の再始動ガイドです。今の状態を丁寧に整理し、次の一歩への道筋を示します。
+              Career Rebootは、休職中に先の見通しを失いやすい時期に寄り添う、人生の再始動ガイドです。今の状態を丁寧に整理し、次の一歩への道筋を示します。
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
@@ -79,7 +79,7 @@ export default function HomePage() {
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
               <p className="text-sm text-slate-200">人生の再始動マップの表示イメージ</p>
               <p className="mt-4 text-2xl font-semibold leading-snug">
-                いまは「復帰」よりも、
+                いまは「急いで再開」よりも、
                 <span className="text-sky-200">心身を整える期間</span>
                 と考えると前に進みやすいです。
               </p>

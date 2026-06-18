@@ -33,7 +33,7 @@ const phases: Record<number, Phase> = {
     actions: [
       "できていた仕事・得意だったことを3つ書き出す",
       "働く上で『絶対に嫌だこと』を3つ整理する",
-      "復帰・転職・学び直しのどれが現実的か情報収集する",
+      "これからの働き方（職場復帰・転職・学び直し）の選択肢を情報収集する",
     ],
   },
   3: {
@@ -131,7 +131,7 @@ export default async function ResultPage({
         <div className="max-w-3xl space-y-6">
           <div className="space-y-4">
             <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-              休職後の現在地診断
+              休職中の現在地診断
             </span>
             <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
               あなたの現在地は{currentPhase.name}です

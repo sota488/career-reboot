@@ -218,7 +218,7 @@ export default async function ResultPage({
           </div>
 
           {categoryScores.some((item) => item.score !== null) ? (
-            <details className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur">
+            <details open className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur">
               <summary className="cursor-pointer list-none font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950">
                 カテゴリ別スコア
               </summary>

@@ -48,27 +48,10 @@ export default function DiagnosisPage() {
   const progress = ((currentIndex + 1) / questions.length) * 100;
   const isLastQuestion = currentIndex === questions.length - 1;
 
-  const handleSelect = (value: number) => {
-    setAnswers((current) => {
-      const next = [...current];
-      next[currentIndex] = value;
-      return next;
-    });
-  };
-
-  const handleNext = () => {
-    if (currentAnswer === null) {
-      return;
-    }
-
-    if (!isLastQuestion) {
-      setCurrentIndex((current) => current + 1);
-      return;
-    }
-
+  const finishDiagnosis = (finalAnswers: Array<number | null>) => {
     const categoryScores = questions.reduce<Record<DiagnosisCategory, number>>(
       (accumulator, question, index) => {
-        accumulator[question.category] += answers[index] ?? 0;
+        accumulator[question.category] += finalAnswers[index] ?? 0;
         return accumulator;
       },
       {
@@ -81,7 +64,7 @@ export default function DiagnosisPage() {
     );
 
     const profile = resolveProfile(categoryScores);
-    const totalScore = answers.reduce<number>((sum, answer) => sum + (answer ?? 0), 0);
+    const totalScore = finalAnswers.reduce<number>((sum, answer) => sum + (answer ?? 0), 0);
 
     const params = new URLSearchParams({
       profile,
@@ -94,6 +77,19 @@ export default function DiagnosisPage() {
     });
 
     router.push(`/result?${params.toString()}`);
+  };
+
+  const handleSelect = (value: number) => {
+    const nextAnswers = [...answers];
+    nextAnswers[currentIndex] = value;
+    setAnswers(nextAnswers);
+
+    if (isLastQuestion) {
+      finishDiagnosis(nextAnswers);
+      return;
+    }
+
+    setCurrentIndex((current) => current + 1);
   };
 
   return (
@@ -120,7 +116,21 @@ export default function DiagnosisPage() {
 
         <div className="mt-10 rounded-[1.75rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-            <div>
+            <div className="w-full">
+              <div className="mb-3 flex items-center justify-between">
+                <button
+                  type="button"
+                  onClick={() => setCurrentIndex((current) => Math.max(current - 1, 0))}
+                  disabled={currentIndex === 0}
+                  aria-label="前の質問へ戻る"
+                  className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-slate-300 bg-white text-base text-slate-500 transition hover:border-slate-400 hover:text-slate-700 disabled:cursor-not-allowed disabled:opacity-40"
+                >
+                  ←
+                </button>
+                <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-600">
+                  {currentQuestion.categoryLabel}
+                </span>
+              </div>
               <p className="text-sm font-medium uppercase tracking-[0.24em] text-slate-400">
                 Q{String(currentQuestion.id).padStart(2, "0")} / {questions.length}
               </p>
@@ -128,9 +138,6 @@ export default function DiagnosisPage() {
                 {currentQuestion.prompt}
               </h2>
             </div>
-            <span className="inline-flex rounded-full bg-slate-100 px-3 py-1 text-sm font-medium text-slate-600">
-              {currentQuestion.categoryLabel}
-            </span>
           </div>
 
           <div className="mt-8">
@@ -180,28 +187,8 @@ export default function DiagnosisPage() {
             </div>
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <button
-              type="button"
-              onClick={() => setCurrentIndex((current) => Math.max(current - 1, 0))}
-              disabled={currentIndex === 0}
-              className="rounded-full border border-slate-300 bg-white px-6 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-40"
-            >
-              前へ
-            </button>
-
-            <div className="text-sm text-slate-500">
-              {currentAnswer === null ? "5段階から1つ選ぶと次へ進めます。" : "回答を変更してから進むこともできます。"}
-            </div>
-
-            <button
-              type="button"
-              onClick={handleNext}
-              disabled={currentAnswer === null}
-              className="rounded-full bg-[#1f365c] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2a4a79] disabled:cursor-not-allowed disabled:opacity-50"
-            >
-              {isLastQuestion ? "診断結果を見る" : "次へ"}
-            </button>
+          <div className="mt-8 rounded-2xl border border-sky-100 bg-sky-50/70 px-4 py-3 text-sm text-slate-600">
+            {isLastQuestion ? "回答を選択すると、結果ページへ移動します。" : "回答を選択すると、自動で次の質問へ進みます。"}
           </div>
         </div>
       </section>

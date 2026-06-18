@@ -28,6 +28,7 @@ export default function HomePage() {
         </div>
         <Link
           href="/diagnosis"
+          style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
           className="rounded-full bg-[#1f365c] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#2a4a79]"
         >
           診断を始める
@@ -51,6 +52,7 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/diagnosis"
+              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
               className="rounded-full bg-[#1f365c] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2a4a79]"
             >
               無料診断を始める

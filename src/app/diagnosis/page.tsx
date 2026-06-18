@@ -1,5 +1,6 @@
 ﻿"use client";
 
+import { trackDiagnosisComplete, trackDiagnosisStart } from "@/lib/analytics";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -45,12 +46,22 @@ export default function DiagnosisPage() {
   const [answers, setAnswers] = useState<Array<number | null>>(() => questions.map(() => null));
   const [pendingSelection, setPendingSelection] = useState<number | null>(null);
   const transitionTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const diagnosisStartTrackedRef = useRef(false);
 
   const currentQuestion = questions[currentIndex];
   const currentAnswer = answers[currentIndex];
   const answeredCount = answers.filter((answer) => answer !== null).length;
   const progress = ((currentIndex + 1) / questions.length) * 100;
   const isLastQuestion = currentIndex === questions.length - 1;
+
+  useEffect(() => {
+    if (diagnosisStartTrackedRef.current) {
+      return;
+    }
+
+    diagnosisStartTrackedRef.current = true;
+    trackDiagnosisStart();
+  }, []);
 
   useEffect(() => {
     return () => {
@@ -77,6 +88,16 @@ export default function DiagnosisPage() {
 
     const profile = resolveProfile(categoryScores);
     const totalScore = finalAnswers.reduce<number>((sum, answer) => sum + (answer ?? 0), 0);
+
+    trackDiagnosisComplete({
+      profile,
+      totalScore,
+      recovery: categoryScores.recovery,
+      selfAcceptance: categoryScores.selfAcceptance,
+      selfUnderstanding: categoryScores.selfUnderstanding,
+      futureOrientation: categoryScores.futureOrientation,
+      actionReadiness: categoryScores.actionReadiness,
+    });
 
     const params = new URLSearchParams({
       profile,

@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+﻿import { ResultViewEvent } from "@/components/analytics/result-view-event";
+import Link from "next/link";
 
 type SearchParams = Record<string, string | string[] | undefined>;
 
@@ -129,6 +130,13 @@ export default async function ResultPage({
 
       <section className="py-10 lg:py-20">
         <div className="max-w-3xl space-y-6">
+          <ResultViewEvent
+            phaseId={currentPhaseId}
+            phaseName={currentPhase.name}
+            profileKey={profileKey}
+            totalScore={totalScore}
+          />
+
           <div className="space-y-4">
             <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
               休職中の現在地診断
@@ -243,6 +251,37 @@ export default async function ResultPage({
               </div>
             </details>
           ) : null}
+
+          <section className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
+            <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">次の一歩</h2>
+            <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
+              仮置きの導線です。後でアフィリエイトリンクに差し替えられるよう、プレースホルダーとして設置しています。
+            </p>
+
+            <div className="mt-5 grid gap-4 sm:grid-cols-2">
+              <article className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h3 className="font-[var(--font-space-grotesk)] text-lg font-semibold text-slate-900">転職を考えている方へ</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">求人比較やキャリア相談サービスの導線を設置予定です。</p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100"
+                >
+                  プレースホルダーリンク
+                </a>
+              </article>
+
+              <article className="rounded-2xl border border-slate-200 bg-white p-5">
+                <h3 className="font-[var(--font-space-grotesk)] text-lg font-semibold text-slate-900">自己理解を深めたい方へ</h3>
+                <p className="mt-2 text-sm leading-6 text-slate-600">自己分析ツールや学習コンテンツの導線を設置予定です。</p>
+                <a
+                  href="#"
+                  className="mt-4 inline-flex rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100"
+                >
+                  プレースホルダーリンク
+                </a>
+              </article>
+            </div>
+          </section>
         </div>
       </section>
     </main>

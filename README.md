@@ -78,6 +78,60 @@ npm run dev
 
 ブラウザで http://localhost:3000 を開きます。
 
+## 計測基盤（Phase 2）
+
+公開済みβ版向けに、Google Analytics 4 と Microsoft Clarity を導入しています。
+
+### 計測できる指標
+
+- 訪問数: `page_view`（全ページ）
+- 診断開始数: `diagnosis_start`
+- 診断完了数: `diagnosis_complete`
+- 結果ページ到達数: `result_page_view`
+
+### 環境変数
+
+`.env.local` に以下を設定してください。
+
+```bash
+NEXT_PUBLIC_GA_MEASUREMENT_ID=G-XXXXXXXXXX
+NEXT_PUBLIC_CLARITY_PROJECT_ID=xxxxxxxxxx
+```
+
+### GA4 導入手順
+
+1. Google Analytics でプロパティを作成し、Webデータストリームを追加する
+2. 測定ID（`G-...`）を取得し、`NEXT_PUBLIC_GA_MEASUREMENT_ID` に設定する
+3. アプリを起動し、`/` → `/diagnosis` → `/result` を遷移してイベントを発火させる
+4. GA4 の DebugView / Realtime で以下イベントを確認する
+  - `page_view`
+  - `diagnosis_start`
+  - `diagnosis_complete`
+  - `result_page_view`
+
+### Microsoft Clarity 導入手順
+
+1. Clarity でプロジェクトを作成し、Project ID を取得する
+2. `NEXT_PUBLIC_CLARITY_PROJECT_ID` に設定する
+3. アプリを起動し、数分待って Clarity ダッシュボードで以下を確認する
+  - ヒートマップ
+  - セッション録画
+  - 離脱箇所（主要導線のドロップ）
+
+### 導入箇所
+
+- GA4 / Clarity スクリプト: `src/components/analytics/analytics-scripts.tsx`
+- 全ページPV送信: `src/components/analytics/page-view-tracker.tsx`
+- 診断開始 / 診断完了イベント: `src/app/diagnosis/page.tsx`
+- 結果ページ表示イベント: `src/components/analytics/result-view-event.tsx` と `src/app/result/page.tsx`
+- ルートレイアウトへの配線: `src/app/layout.tsx`
+
+### イベント設計メモ
+
+- `diagnosis_complete` は `profile_key` とカテゴリ別スコアを送信
+- `result_page_view` は `phase_id` `phase_name` `profile_key` `total_score` を送信
+- `page_view` は `send_page_view: false` 設定の上で、ルート変更時に手動送信
+
 ## ページ構成
 
 - `/` - ホームページ

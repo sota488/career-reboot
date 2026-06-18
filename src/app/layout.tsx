@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
+import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import "./globals.css";
@@ -30,7 +31,9 @@ export default function RootLayout({
         className={`${manrope.variable} ${spaceGrotesk.variable} flex min-h-screen flex-col bg-transparent text-slate-900 antialiased`}
       >
         <div className="flex-1">{children}</div>
-        <PageViewTracker />
+        <Suspense fallback={null}>
+          <PageViewTracker />
+        </Suspense>
         <AnalyticsScripts />
         <footer className="border-t border-slate-200/80 bg-white/75 px-6 py-6 text-slate-600 backdrop-blur sm:px-8">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 text-sm">

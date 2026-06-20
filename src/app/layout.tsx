@@ -17,7 +17,7 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://career-reboot.vercel.app",
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://career-reboot-omega.vercel.app",
   ),
   title: {
     default: "Career Reboot | 休職中のロードマップ診断",

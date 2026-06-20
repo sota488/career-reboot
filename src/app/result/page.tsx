@@ -1,4 +1,6 @@
 ﻿import { ResultViewEvent } from "@/components/analytics/result-view-event";
+import { ServiceCard } from "@/components/result/service-card";
+import { phaseServiceGuides, type ServiceCategory } from "@/lib/services";
 import Link from "next/link";
 
 type SearchParams = Record<string, string | string[] | undefined>;
@@ -10,6 +12,11 @@ type Phase = {
   currentState: string;
   nextPhase: string;
   actions: string[];
+};
+
+type NextStepGuide = {
+  stageLabel: "回復期" | "再始動期" | "行動期";
+  items: string[];
 };
 
 const phases: Record<number, Phase> = {
@@ -102,6 +109,42 @@ function pickScore(value: string | string[] | undefined) {
   return Number.isFinite(parsed) ? parsed : null;
 }
 
+function resolveNextStepGuide(currentPhaseId: number): NextStepGuide {
+  if (currentPhaseId <= 2) {
+    return {
+      stageLabel: "回復期",
+      items: [
+        "生活リズムを整える",
+        "主治医と相談する",
+        "無理な転職活動をしない",
+        "まずは体力と気力の回復を優先する",
+      ],
+    };
+  }
+
+  if (currentPhaseId <= 4) {
+    return {
+      stageLabel: "再始動期",
+      items: [
+        "キャリアの棚卸しを行う",
+        "小さな挑戦を始める",
+        "副業や学習を試してみる",
+        "リワークやキャリア相談を活用する",
+      ],
+    };
+  }
+
+  return {
+    stageLabel: "行動期",
+    items: [
+      "転職活動を始める",
+      "面談や情報収集を進める",
+      "スキル習得を進める",
+      "自分に合う働き方を検討する",
+    ],
+  };
+}
+
 export default async function ResultPage({
   searchParams,
 }: {
@@ -111,6 +154,8 @@ export default async function ResultPage({
   const profileKey = pickValue(resolvedSearchParams.profile) ?? "balance";
   const currentPhaseId = profilePhaseMap[profileKey] ?? 4;
   const currentPhase = phases[currentPhaseId];
+  const nextStepGuide = resolveNextStepGuide(currentPhaseId);
+  const serviceGuide = phaseServiceGuides[currentPhaseId];
   const totalScore = pickScore(resolvedSearchParams.total);
   const categoryScores = categoryItems.map((item) => ({
     ...item,
@@ -253,34 +298,56 @@ export default async function ResultPage({
           ) : null}
 
           <section className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
-            <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">次の一歩</h2>
+            <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">おすすめの次の一歩</h2>
             <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
-              仮置きの導線です。後でアフィリエイトリンクに差し替えられるよう、プレースホルダーとして設置しています。
+              現在地は<span className="font-semibold text-sky-700">{nextStepGuide.stageLabel}</span>に近い状態です。今の状態に合う行動から、無理なく進めていきましょう。
             </p>
 
-            <div className="mt-5 grid gap-4 sm:grid-cols-2">
-              <article className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h3 className="font-[var(--font-space-grotesk)] text-lg font-semibold text-slate-900">転職を考えている方へ</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">求人比較やキャリア相談サービスの導線を設置予定です。</p>
-                <a
-                  href="#"
-                  className="mt-4 inline-flex rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100"
-                >
-                  プレースホルダーリンク
-                </a>
-              </article>
+            <ul className="mt-5 space-y-3">
+              {nextStepGuide.items.map((item, index) => (
+                <li key={item} className="flex items-start gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 text-slate-700">
+                  <span className="mt-0.5 inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-sky-100 text-xs font-semibold text-sky-700">
+                    {index + 1}
+                  </span>
+                  <span className="leading-7">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
 
-              <article className="rounded-2xl border border-slate-200 bg-white p-5">
-                <h3 className="font-[var(--font-space-grotesk)] text-lg font-semibold text-slate-900">自己理解を深めたい方へ</h3>
-                <p className="mt-2 text-sm leading-6 text-slate-600">自己分析ツールや学習コンテンツの導線を設置予定です。</p>
-                <a
-                  href="#"
-                  className="mt-4 inline-flex rounded-full border border-sky-200 bg-sky-50 px-4 py-2 text-sm font-medium text-sky-700 hover:bg-sky-100"
-                >
-                  プレースホルダーリンク
-                </a>
-              </article>
-            </div>
+          {serviceGuide ? (
+            <section className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
+              <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">おすすめサービス</h2>
+              <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">{serviceGuide.message}</p>
+
+              {([
+                { key: "career" as ServiceCategory, label: "キャリア相談" },
+                { key: "job" as ServiceCategory, label: "転職支援" },
+                { key: "book" as ServiceCategory, label: "書籍" },
+              ].filter(({ key }) =>
+                serviceGuide.services.some((s) => s.category === key)
+              )).map(({ key, label }) => (
+                <div key={key} className="mt-5">
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">{label}</p>
+                  <div className="mt-3 grid gap-3 sm:grid-cols-2">
+                    {serviceGuide.services
+                      .filter((s) => s.category === key)
+                      .map((service) => (
+                        <ServiceCard
+                          key={service.id}
+                          service={service}
+                          phase={serviceGuide.phase}
+                        />
+                      ))}
+                  </div>
+                </div>
+              ))}
+            </section>
+          ) : null}
+
+          <section className="rounded-[2rem] border border-dashed border-slate-300 bg-white/70 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
+            <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">診断結果を保存する</h2>
+            <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">診断結果の保存機能は準備中です。</p>
           </section>
         </div>
       </section>

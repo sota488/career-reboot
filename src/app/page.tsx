@@ -17,6 +17,21 @@ const highlights = [
 
 const signals = ["休職中の不安", "キャリアの棚卸し", "無理のない再始動", "これからの選択肢"];
 
+const diagnosisOutcomes = [
+  "今自分は回復のどの段階にいるか",
+  "焦って転職活動を始めても大丈夫か",
+  "まず休むべきか、動くべきか",
+  "次の3ヶ月で意識したい行動",
+  "自分に合う再スタートの方向性",
+];
+
+const recommendationChecks = [
+  "休職中で将来が不安な方",
+  "復職するか転職するか迷っている方",
+  "焦りはあるが何から始めればいいかわからない方",
+  "自分の状態を客観的に整理したい方",
+];
+
 export default function HomePage() {
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-6 py-8 lg:px-8">
@@ -38,7 +53,7 @@ export default function HomePage() {
       <section className="grid gap-8 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-24">
         <div className="space-y-8">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職中の現在地を、3分でやさしく確認する
+            休職後のロードマップ診断
           </span>
           <div className="space-y-5">
             <h1 className="max-w-3xl font-[var(--font-space-grotesk)] text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
@@ -46,9 +61,24 @@ export default function HomePage() {
               <span className="block text-sky-700">働き方と人生の再始動を。</span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Career Rebootは、休職中に先の見通しを失いやすい時期に寄り添う、人生の再始動ガイドです。今の状態を丁寧に整理し、次の一歩への道筋を示します。
+              Career Rebootは、休職後に先の見通しを失いやすい時期に寄り添う、ロードマップ診断です。今の状態を丁寧に整理し、次に何をすればよいかの道筋を示します。
             </p>
           </div>
+
+          <section className="rounded-[1.5rem] border border-slate-200 bg-white/80 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-6">
+            <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950">こんな方におすすめ</h2>
+            <ul className="mt-4 grid gap-2.5">
+              {recommendationChecks.map((item) => (
+                <li key={item} className="flex items-start gap-2.5 rounded-xl border border-slate-200 bg-white px-3.5 py-3 text-sm leading-6 text-slate-700 sm:text-base">
+                  <span className="mt-1 inline-flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-sky-100 text-[10px] font-bold text-sky-700">
+                    ✓
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <div className="flex flex-wrap gap-3">
             <Link
               href="/diagnosis"
@@ -95,6 +125,19 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section className="pb-10 lg:pb-12">
+        <div className="rounded-[1.75rem] border border-white/80 bg-white/85 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-7">
+          <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">この診断でわかること</h2>
+          <ul className="mt-5 grid gap-3 sm:grid-cols-2">
+            {diagnosisOutcomes.map((item) => (
+              <li key={item} className="rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm leading-6 text-slate-700 sm:text-base">
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     template: "%s | Career Reboot",
   },
   description:
-    "5分で現在地を診断。あなたに合った次の一歩を提案する、休職経験者向けのキャリア診断サービスです。",
+    "5分で現在地を診断。休職中のあなたに合った次の一歩を提案するキャリア診断サービスです。",
   openGraph: {
     type: "website",
     locale: "ja_JP",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description: "5分で現在地を診断。あなたに合った次の一歩を提案します。",
     images: [
       {
-        url: "/opengraph-image.png",
+        url: "/ogp.png",
         width: 1200,
         height: 630,
         alt: "Career Reboot | 休職中のロードマップ診断",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Career Reboot | 休職中のロードマップ診断",
     description: "5分で現在地を診断。あなたに合った次の一歩を提案します。",
-    images: ["/opengraph-image.png"],
+    images: ["/ogp.png"],
   },
 };
 

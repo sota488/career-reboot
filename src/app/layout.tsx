@@ -16,8 +16,36 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  title: "Career Reboot",
-  description: "休職後のロードマップ診断で、次の一歩を明確にするキャリアガイド",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://career-reboot.vercel.app",
+  ),
+  title: {
+    default: "Career Reboot | 休職中のロードマップ診断",
+    template: "%s | Career Reboot",
+  },
+  description:
+    "5分で現在地を診断。あなたに合った次の一歩を提案する、休職経験者向けのキャリア診断サービスです。",
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    siteName: "Career Reboot",
+    title: "Career Reboot | 休職中のロードマップ診断",
+    description: "5分で現在地を診断。あなたに合った次の一歩を提案します。",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Career Reboot | 休職中のロードマップ診断",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Career Reboot | 休職中のロードマップ診断",
+    description: "5分で現在地を診断。あなたに合った次の一歩を提案します。",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
@@ -38,7 +66,7 @@ export default function RootLayout({
         <footer className="border-t border-slate-200/80 bg-white/75 px-6 py-6 text-slate-600 backdrop-blur sm:px-8">
           <div className="mx-auto flex max-w-6xl flex-col gap-1 text-sm">
             <p className="font-[var(--font-space-grotesk)] font-semibold tracking-[0.08em] text-slate-700">Career Reboot β</p>
-            <p>休職後のロードマップ診断</p>
+            <p>休職中のロードマップ診断</p>
             <p className="text-xs text-slate-500">© Career Reboot</p>
           </div>
         </footer>

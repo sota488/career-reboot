@@ -184,7 +184,7 @@ export default async function ResultPage({
 
           <div className="space-y-4">
             <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-              休職中の現在地診断
+              休職中のロードマップ診断
             </span>
             <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
               あなたの現在地は{currentPhase.name}です
@@ -197,7 +197,7 @@ export default async function ResultPage({
           <div className="rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
             <div className="space-y-6">
               <div className="space-y-3">
-                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">再始動のマップ</p>
+                <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">ロードマップ</p>
                 <div className="overflow-x-auto pb-1">
                   <div className="flex min-w-[520px] items-center justify-between gap-2">
                   {Array.from({ length: 5 }).map((_, index) => {

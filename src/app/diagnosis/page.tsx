@@ -146,7 +146,7 @@ export default function DiagnosisPage() {
       <section className="py-8 sm:py-14 lg:py-20">
         <div className="max-w-2xl space-y-4">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職中の現在地診断
+            休職中のロードマップ診断
           </span>
           <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
             今の自分に合う再スタートの形を見つける

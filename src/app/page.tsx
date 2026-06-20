@@ -6,7 +6,7 @@ const highlights = [
     description: "心と体の状態をやさしく振り返り、無理のない一歩を考えます。",
   },
   {
-    title: "再始動マップで見通しを持つ",
+    title: "休職中のロードマップ診断で見通しを持つ",
     description: "休息期から実行期まで、今どこにいるかを5つのフェーズで可視化します。",
   },
   {
@@ -53,7 +53,7 @@ export default function HomePage() {
       <section className="grid gap-8 py-16 lg:grid-cols-[1.2fr_0.8fr] lg:items-center lg:py-24">
         <div className="space-y-8">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職後のロードマップ診断
+            休職中のロードマップ診断
           </span>
           <div className="space-y-5">
             <h1 className="max-w-3xl font-[var(--font-space-grotesk)] text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
@@ -61,7 +61,7 @@ export default function HomePage() {
               <span className="block text-sky-700">働き方と人生の再始動を。</span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Career Rebootは、休職後に先の見通しを失いやすい時期に寄り添う、ロードマップ診断です。今の状態を丁寧に整理し、次に何をすればよいかの道筋を示します。
+              Career Rebootは、休職中に先の見通しを失いやすい時期に寄り添う、休職中のロードマップ診断です。今の状態を丁寧に整理し、次に何をすればよいかの道筋を示します。
             </p>
           </div>
 
@@ -107,7 +107,7 @@ export default function HomePage() {
           <div className="absolute inset-x-6 top-6 h-72 rounded-full bg-sky-300/25 blur-3xl" />
           <div className="relative rounded-[2rem] border border-white/80 bg-[#1f365c] p-6 text-white shadow-2xl shadow-slate-900/20">
             <div className="rounded-[1.5rem] border border-white/10 bg-white/5 p-6">
-              <p className="text-sm text-slate-200">人生の再始動マップの表示イメージ</p>
+              <p className="text-sm text-slate-200">休職中のロードマップ診断の表示イメージ</p>
               <p className="mt-4 text-2xl font-semibold leading-snug">
                 いまは「急いで再開」よりも、
                 <span className="text-sky-200">心身を整える期間</span>

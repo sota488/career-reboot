@@ -17,7 +17,7 @@ function formatDate(value: string) {
 
 export function ArticleLayout({ article, children }: ArticleLayoutProps) {
   return (
-    <article className="mx-auto min-h-screen max-w-5xl px-5 py-6 sm:px-6 sm:py-8 lg:px-8">
+    <article className="mx-auto min-h-screen max-w-5xl px-6 py-6 sm:px-7 sm:py-8 lg:px-8">
       <nav aria-label="パンくず" className="mx-auto mb-6 max-w-[44rem] text-sm text-slate-500 sm:mb-8">
         <ol className="flex flex-wrap items-center gap-2">
           <li>
@@ -36,7 +36,7 @@ export function ArticleLayout({ article, children }: ArticleLayoutProps) {
         </ol>
       </nav>
 
-      <header className="mx-auto max-w-[44rem] space-y-6 rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
+      <header className="mx-auto max-w-[44rem] space-y-6 rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
         <div className="flex flex-wrap items-center gap-3">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
             {article.category}
@@ -83,13 +83,13 @@ export function ArticleLayout({ article, children }: ArticleLayoutProps) {
         </div>
       </header>
 
-      <section className="mx-auto mt-6 max-w-[44rem] rounded-[2rem] border border-white/80 bg-white/85 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:mt-8 sm:p-8">
-        <div className="text-[16px] leading-8 text-slate-700 sm:text-[17px] sm:leading-[2.02] [&>*+*]:mt-5 [&>h2]:mt-14 [&>h2]:mb-5 [&>h2]:border-l-2 [&>h2]:border-slate-300 [&>h2]:pl-4 [&>h2]:font-[var(--font-space-grotesk)] [&>h2]:text-[1.34rem] [&>h2]:font-semibold [&>h2]:tracking-tight [&>h2]:text-slate-900 sm:[&>h2]:text-[1.5rem] [&>h3]:mt-10 [&>h3]:mb-4 [&>h3]:font-[var(--font-space-grotesk)] [&>h3]:text-[1.14rem] [&>h3]:font-semibold [&>h3]:tracking-tight [&>h3]:text-slate-900 sm:[&>h3]:text-[1.24rem] [&>ul]:my-6 [&>ul]:space-y-2 [&>ul]:pl-5 [&>ol]:my-6 [&>ol]:space-y-2 [&>ol]:pl-5 [&>blockquote]:my-10 [&>blockquote]:rounded-2xl [&>blockquote]:border [&>blockquote]:border-slate-200 [&>blockquote]:bg-slate-50/80 [&>blockquote]:px-5 [&>blockquote]:py-4 [&>blockquote]:text-[15px] [&>blockquote]:leading-7 [&>blockquote]:text-slate-600">
+      <section className="mx-auto mt-6 max-w-[44rem] rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:mt-8 sm:p-8">
+        <div className="text-[16px] leading-8 text-slate-700 sm:text-[17px] sm:leading-[1.98] [&>*+*]:mt-4 [&>h2]:mt-12 [&>h2]:mb-4 [&>h2]:font-[var(--font-space-grotesk)] [&>h2]:text-[1.32rem] [&>h2]:font-semibold [&>h2]:tracking-tight [&>h2]:text-slate-900 sm:[&>h2]:text-[1.48rem] [&>h3]:mt-9 [&>h3]:mb-3 [&>h3]:font-[var(--font-space-grotesk)] [&>h3]:text-[1.12rem] [&>h3]:font-semibold [&>h3]:tracking-tight [&>h3]:text-slate-900 sm:[&>h3]:text-[1.22rem] [&>ul]:my-6 [&>ul]:space-y-2 [&>ul]:pl-5 [&>ol]:my-6 [&>ol]:space-y-2 [&>ol]:pl-5 [&>blockquote]:my-9 [&>blockquote]:rounded-2xl [&>blockquote]:border [&>blockquote]:border-slate-200 [&>blockquote]:bg-slate-50/80 [&>blockquote]:px-5 [&>blockquote]:py-4 [&>blockquote]:text-[15px] [&>blockquote]:leading-7 [&>blockquote]:text-slate-600">
           {children}
         </div>
       </section>
 
-      <section className="mx-auto mt-8 max-w-[44rem] rounded-[2rem] border border-sky-100 bg-sky-50/70 p-5 sm:p-8">
+      <section className="mx-auto mt-8 max-w-[44rem] rounded-[2rem] border border-sky-100 bg-sky-50/70 p-6 sm:p-8">
         <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950">
           ひとりで整理しきれないときは
         </h2>
@@ -113,7 +113,7 @@ export function ArticleLayout({ article, children }: ArticleLayoutProps) {
         </div>
       </section>
 
-      <section className="mx-auto mt-8 max-w-[44rem] rounded-[2rem] border border-slate-200 bg-white/80 p-5 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
+      <section className="mx-auto mt-8 max-w-[44rem] rounded-[2rem] border border-slate-200 bg-white/80 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
         <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950">
           関連記事
         </h2>

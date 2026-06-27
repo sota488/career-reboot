@@ -1,4 +1,6 @@
 ﻿import Link from "next/link";
+import { ColumnCard } from "@/components/columns/column-card";
+import { getLatestArticles } from "@/lib/articles";
 
 const highlights = [
   {
@@ -33,6 +35,8 @@ const recommendationChecks = [
 ];
 
 export default function HomePage() {
+  const latestArticles = getLatestArticles(3);
+
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-6 py-8 lg:px-8">
       <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 backdrop-blur-md shadow-sm shadow-slate-900/5">
@@ -148,6 +152,34 @@ export default function HomePage() {
             <p className="mt-3 leading-7 text-slate-600">{item.description}</p>
           </article>
         ))}
+      </section>
+
+      <section className="pb-16 lg:pb-24">
+        <div className="flex items-end justify-between gap-4">
+          <div className="max-w-2xl space-y-3">
+            <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
+              コラム
+            </span>
+            <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
+              休職したばかりの人へ届けたい文章
+            </h2>
+            <p className="text-sm leading-7 text-slate-600 sm:text-base">
+              まずは最新の3本だけを載せています。気持ちが少し落ち着いたときに、無理のない範囲で読める場所として置いています。
+            </p>
+          </div>
+          <Link
+            href="/columns"
+            className="shrink-0 rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-700 transition hover:border-slate-400 hover:bg-slate-50"
+          >
+            すべて見る
+          </Link>
+        </div>
+
+        <div className="mt-6 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {latestArticles.map((article) => (
+            <ColumnCard key={article.slug} article={article} />
+          ))}
+        </div>
       </section>
     </main>
   );

@@ -17,9 +17,10 @@ type ServiceCardProps = {
 export function ServiceCard({ service, phase }: ServiceCardProps) {
   function handleClick() {
     trackEvent("service_click", {
+      service_name: service.id,
+      placement: "result_page",
       phase,
       category: service.category,
-      service_name: service.id,
     });
   }
 
@@ -27,7 +28,7 @@ export function ServiceCard({ service, phase }: ServiceCardProps) {
     <a
       href={service.url}
       target="_blank"
-      rel="noopener noreferrer"
+      rel="nofollow noopener noreferrer"
       onClick={handleClick}
       className="group flex flex-col gap-2 rounded-2xl border border-slate-200 bg-white p-5 transition hover:border-sky-300 hover:shadow-sm"
     >

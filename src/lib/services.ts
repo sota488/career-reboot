@@ -1,3 +1,5 @@
+import { AFFILIATE_LINKS } from "@/lib/affiliate-links";
+
 export type ServiceCategory = "book" | "career" | "job";
 
 export type ServiceItem = {
@@ -48,7 +50,7 @@ export const phaseServiceGuides: Record<number, PhaseServiceGuide> = {
         id: "posiwill",
         name: "POSIWILL CAREER",
         description: "自己理解やキャリアの棚卸しを進めたい方へ",
-        url: "https://posiwill.jp/career/",
+        url: AFFILIATE_LINKS.posiwill,
         category: "career",
       },
       {
@@ -76,7 +78,7 @@ export const phaseServiceGuides: Record<number, PhaseServiceGuide> = {
         id: "posiwill",
         name: "POSIWILL CAREER",
         description: "自己理解を深めながら方向性を模索したい方へ",
-        url: "https://posiwill.jp/career/",
+        url: AFFILIATE_LINKS.posiwill,
         category: "career",
       },
       {
@@ -104,7 +106,7 @@ export const phaseServiceGuides: Record<number, PhaseServiceGuide> = {
         id: "posiwill",
         name: "POSIWILL CAREER",
         description: "転職の軸や優先条件を整理したい方へ",
-        url: "https://posiwill.jp/career/",
+        url: AFFILIATE_LINKS.posiwill,
         category: "career",
       },
       {
@@ -146,7 +148,7 @@ export const phaseServiceGuides: Record<number, PhaseServiceGuide> = {
         id: "posiwill",
         name: "POSIWILL CAREER",
         description: "転職後の方向性を再確認したい方へ",
-        url: "https://posiwill.jp/career/",
+        url: AFFILIATE_LINKS.posiwill,
         category: "career",
       },
       {

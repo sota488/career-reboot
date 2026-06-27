@@ -10,6 +10,10 @@ if (!article) {
 export default function NothingWasTheHardestArticle() {
   return (
     <ArticleLayout article={article}>
+      <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold tracking-tight text-slate-950 sm:text-3xl">
+        リード
+      </h2>
+
       <p>休職していた頃、一番つらかったのは体調そのものではありませんでした。</p>
 
       <p>「何もできない自分」を責め続けてしまうことでした。</p>
@@ -36,13 +40,7 @@ export default function NothingWasTheHardestArticle() {
 
       <p>そんな感覚が、毎日のようにありました。</p>
 
-      <p>周りからは、</p>
-
-      <p>「今は休めばいいんだよ。」</p>
-
-      <p>と言ってもらいました。</p>
-
-      <p>でも、その「休む」が一番難しかったのです。</p>
+      <p>周りから「今は休めばいいんだよ」と言ってもらっても、その「休む」が一番難しかったのです。</p>
 
       <p>何もしていない自分を責める。</p>
 
@@ -80,9 +78,7 @@ export default function NothingWasTheHardestArticle() {
 
       <p>そんな不安もありました。</p>
 
-      <p>復職できるのか。</p>
-
-      <p>また以前のように働けるのか。</p>
+      <p>復職できるのか。また以前のように働けるのか。</p>
 
       <p>答えの出ないことばかり考えていました。</p>
 
@@ -94,11 +90,7 @@ export default function NothingWasTheHardestArticle() {
 
       <p>でも、何もできない。</p>
 
-      <p>そのたびに、</p>
-
-      <p>「何もできない自分には価値がない。」</p>
-
-      <p>そんなふうに思い込んでいました。</p>
+      <p>そのたびに、「何もできない自分には価値がない」と思い込んでいました。</p>
 
       <p>今なら、それは違ったとわかります。</p>
 
@@ -110,13 +102,7 @@ export default function NothingWasTheHardestArticle() {
         私は「休む」の意味を勘違いしていた
       </h2>
 
-      <p>当時の私は、</p>
-
-      <p>休むことを、</p>
-
-      <p>「何も生み出していない時間」</p>
-
-      <p>だと思っていました。</p>
+      <p>当時の私は、休むことを「何も生み出していない時間」だと思っていました。</p>
 
       <p>だから休んでいる間も、どこかで焦っていました。</p>
 
@@ -136,19 +122,11 @@ export default function NothingWasTheHardestArticle() {
 
       <p>元気なときなら数分で終わることが、その日は一日がかりになることもありました。</p>
 
-      <p>だから「今日は起きられた。」</p>
-
-      <p>「今日は温かいものを食べられた。」</p>
+      <p>だから「今日は起きられた」「今日は温かいものを食べられた」。</p>
 
       <p>それだけでも十分な一歩だったのです。</p>
 
-      <p>私は、</p>
-
-      <p>「早く戻らなきゃ。」</p>
-
-      <p>「早く元気にならなきゃ。」</p>
-
-      <p>と毎日のように思っていました。</p>
+      <p>私は毎日のように、「早く戻らなきゃ」「早く元気にならなきゃ」と思っていました。</p>
 
       <p>でも、その焦りが回復を遅らせていました。</p>
 
@@ -172,11 +150,7 @@ export default function NothingWasTheHardestArticle() {
 
       <p>本を数ページだけ読む。</p>
 
-      <p>どれも、</p>
-
-      <p>「人生が変わる行動」</p>
-
-      <p>ではありません。</p>
+      <p>どれも「人生が変わる行動」ではありません。</p>
 
       <p>でも、その小さな積み重ねが、自分を少しずつ外の世界へ戻してくれました。</p>
 
@@ -213,12 +187,6 @@ export default function NothingWasTheHardestArticle() {
       <p>もし今、「何もできていない」と自分を責めているなら、そのことだけは忘れないでほしいと思います。</p>
 
       <p>止まっているように見える日にも、人生はちゃんと進んでいます。</p>
-
-      <blockquote className="rounded-2xl border border-slate-200 bg-slate-50/80 px-5 py-4 text-sm leading-7 text-slate-600">
-        <strong>
-          次回は、「休職中に『何かしなきゃ』と焦って、回復を遠回りしてしまった話」を書こうと思います。あの頃の私がどうやって少しずつ焦りと向き合えるようになったのかを、体験をもとにお話しします。
-        </strong>
-      </blockquote>
     </ArticleLayout>
   );
 }

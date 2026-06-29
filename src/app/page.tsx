@@ -57,15 +57,15 @@ export default function HomePage() {
       <section className="py-16 lg:py-20">
         <div className="space-y-7">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職中の現在地診断
+            いまの現在地を知る5分診断
           </span>
           <div className="space-y-5">
             <h1 className="max-w-3xl font-[var(--font-space-grotesk)] text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              休職中のいまを整理し、
-              <span className="block text-sky-700">次の一歩を決める現在地診断。</span>
+              復職した方がいいのか、まだ休んでもいいのか。
+              <span className="block text-sky-700">転職も含めて、いまの現在地を整理する5分診断です。</span>
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Career Rebootは、適職診断でも転職サービスでもなく、休職中の人が「いま何を優先すべきか」を整理するための診断です。現在地を知ることで、焦らず次の行動を決めやすくします。
+              休職中のあなたが、いま何を優先すると安心して進めるかを整理する5分診断です。現在地が見えると、次の一歩をあなたのペースで選びやすくなります。
             </p>
           </div>
           <div className="space-y-3">
@@ -77,7 +77,7 @@ export default function HomePage() {
               無料診断を始める
             </Link>
             <p className="text-sm text-slate-500">約5分・登録不要・完全無料。回答後すぐに結果が表示されます。</p>
-            <p className="text-sm text-slate-500">復職・転職・休養のどれかを押し付ける診断ではありません。</p>
+            <p className="text-sm text-slate-500">あなたのペースに合わせて、復職・転職・休養の次の一歩を整理できます。</p>
           </div>
           <div className="flex flex-wrap gap-2 text-sm text-slate-500">
             {signals.map((signal) => (
@@ -91,23 +91,22 @@ export default function HomePage() {
 
       <section className="pb-10 lg:pb-12">
         <div className="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 sm:p-6">
-          <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950 sm:text-2xl">Career Rebootの現在地診断とは</h2>
+          <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950 sm:text-2xl">答えを急ぐより、まずはあなたの現在地を整えましょう。</h2>
           <ul className="mt-4 grid gap-3 text-sm leading-7 text-slate-700 sm:text-base">
-            <li>向いている職種を判定する適職診断ではなく、いまの回復段階を整理する診断です。</li>
-            <li>求人を勧める転職サービスではなく、動く前の意思決定を整えるための診断です。</li>
-            <li>症状を判定するメンタル診断ではなく、次の一歩の優先順位を決めるための診断です。</li>
+            <li>向いている職種を当てるより、いまの回復段階を丁寧に整理できます。</li>
+            <li>求人を急いで探す前に、動き出すための意思決定を整えられます。</li>
+            <li>心の状態を評価するより、あなたの次の一歩の優先順位を見つけられます。</li>
           </ul>
         </div>
       </section>
 
       <section className="pb-14 lg:pb-16">
         <div className="rounded-[2rem] border border-sky-200 bg-white/90 p-6 shadow-md shadow-slate-900/10 backdrop-blur sm:p-8">
-          <p className="text-sm font-semibold uppercase tracking-[0.18em] text-sky-700">解決策: いまの現在地を可視化する</p>
-          <h2 className="mt-3 font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
-            「いま何を優先すべきか」を、5分で整理できます
+          <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
+            いまは、何から始めればいいのでしょうか。
           </h2>
           <p className="mt-3 text-slate-600">
-            今の気持ちに近い選択肢を選ぶだけで、回復フェーズと次に取り組みやすい行動が分かります。転職を急ぐのではなく、いまの自分に合う順番で動くための判断土台を作れます。
+            5分で、あなたの現在地を整理できます。今の気持ちに近い選択肢を選ぶだけで、回復フェーズと次に取り組みやすい行動が分かります。
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -135,7 +134,7 @@ export default function HomePage() {
       </section>
 
       <section className="pb-10 lg:pb-12">
-        <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">共感: こんな迷いはありませんか</h2>
+        <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">こんな迷いが、ずっと頭の中に残っていませんか？</h2>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {recommendationChecks.map((item) => (
             <li key={item} className="flex items-start gap-3 border-b border-slate-200/80 pb-3 text-sm leading-7 text-slate-700 sm:text-base">
@@ -148,8 +147,8 @@ export default function HomePage() {
       </section>
 
       <section className="pb-10 lg:pb-12">
-        <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">診断すると得られること</h2>
-        <p className="mt-3 max-w-3xl text-slate-600">無料だからではなく、現在地に合う次の一歩を決めるために使える情報が得られます。</p>
+        <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">診断すると、次の一歩が見えてきます。</h2>
+        <p className="mt-3 max-w-3xl text-slate-600">あなたの気持ちと状態に合う行動を決めるための判断材料が手に入ります。</p>
         <ul className="mt-5 grid gap-3 sm:grid-cols-2">
           {diagnosisOutcomes.map((item) => (
             <li key={item} className="border-b border-slate-200/80 pb-3 text-sm leading-7 text-slate-700 sm:text-base">
@@ -170,12 +169,12 @@ export default function HomePage() {
 
       <section className="pb-10 lg:pb-12">
         <div className="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 sm:p-6">
-          <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950 sm:text-2xl">信頼して使える理由</h2>
+          <h2 className="font-[var(--font-space-grotesk)] text-xl font-semibold text-slate-950 sm:text-2xl">あなたのペースで、次の一歩を考えられます。</h2>
           <ul className="mt-4 grid gap-3 text-sm leading-7 text-slate-700 sm:text-base">
-            <li>休職経験でつまずきやすい意思決定をもとに質問を設計</li>
-            <li>キャリア支援で使われる整理観点を参考に診断ロジックを構成</li>
-            <li>回答傾向を見ながら、継続的に改善しているβ版サービス</li>
-            <li>転職を勧めるためではなく、いまの状態を整理することを目的に設計</li>
+            <li>休職経験でつまずきやすい意思決定をもとに、質問を設計しています。</li>
+            <li>キャリア支援の整理観点を参考に、診断ロジックを組み立てています。</li>
+            <li>回答傾向を見ながら、より寄り添える形へ継続的に改善しています。</li>
+            <li>あなたのいまの状態を整理し、次の一歩を選びやすくすることを大切にしています。</li>
           </ul>
         </div>
       </section>
@@ -183,7 +182,7 @@ export default function HomePage() {
       <section className="pb-14 lg:pb-16">
         <div className="relative overflow-hidden rounded-[2rem] border border-white/80 bg-[#1f365c] p-7 text-white shadow-2xl shadow-slate-900/20 sm:p-10">
           <div className="absolute -top-20 right-0 h-56 w-56 rounded-full bg-sky-300/20 blur-3xl" aria-hidden></div>
-          <p className="text-sm font-medium text-sky-100">診断するとこのような結果が表示されます</p>
+          <p className="text-sm font-medium text-sky-100">診断後は、このように現在地が見えてきます。</p>
           <p className="mt-4 max-w-3xl font-[var(--font-space-grotesk)] text-3xl font-semibold leading-snug sm:text-4xl">
             いまは「急いで再開」よりも、
             <span className="text-sky-200">心身を整える期間</span>
@@ -204,9 +203,9 @@ export default function HomePage() {
 
       <section className="pb-16 lg:pb-20">
         <div className="rounded-[1.75rem] border border-sky-200 bg-sky-50/70 p-6 text-center sm:p-8">
-          <p className="text-sm text-sky-800">転職を急ぐ前に、まず今の現在地を整理しませんか？</p>
+          <p className="text-sm text-sky-800">いまの気持ちを整理しながら、現在地を整理してみませんか？</p>
           <h2 className="mt-2 font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
-            今の自分を整理する無料診断を始める
+            ここから、あなたの現在地を一緒に整理してみましょう。
           </h2>
           <Link
             href="/diagnosis"

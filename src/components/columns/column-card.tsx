@@ -27,7 +27,7 @@ export function ColumnCard({ article }: ColumnCardProps) {
       <p className="mt-3 leading-7 text-slate-600">{article.description}</p>
       <div className="mt-4 flex flex-wrap gap-2">
         {article.tags.slice(0, 3).map((tag) => (
-          <span key={tag} className="rounded-full border border-slate-200 bg-white px-2.5 py-1 text-xs text-slate-500">
+          <span key={tag} className="rounded-full bg-slate-100/80 px-2.5 py-1 text-[11px] text-slate-500">
             #{tag}
           </span>
         ))}

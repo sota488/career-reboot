@@ -138,6 +138,11 @@ NEXT_PUBLIC_CLARITY_PROJECT_ID=xxxxxxxxxx
 - `/diagnosis` - 20問の診断フロー
 - `/result` - 診断結果と人生マップ表示
 
+## Design System
+
+- `docs/design-system/README.md` - Design System 全体構成
+- `docs/design-system/chapter-1-brand-foundation.md` - Chapter 1 Brand Foundation
+
 ## 今後の改善案
 
 ### Phase 2（短期）

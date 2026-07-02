@@ -146,13 +146,13 @@ export default function DiagnosisPage() {
       <section className="py-8 sm:py-14 lg:py-20">
         <div className="max-w-2xl space-y-4">
           <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            休職中のロードマップ診断
+            いまの気持ちを整理する診断
           </span>
-          <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
-            今の自分に合う再スタートの形を見つける
+          <h1 className="whitespace-nowrap font-[var(--font-space-grotesk)] text-xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+            今の自分に合う一歩を見つける
           </h1>
           <p className="hidden text-lg leading-8 text-slate-600 sm:block">
-            感情や状態を確認する20の質問に答えながら、あなたの現在地を丁寧に見つめ直します。無理のないペースで、1問ずつ進められます。
+            20の質問に答えながら、いまの状態をやさしく整理します。焦らず、あなたのペースで1問ずつ進められます。
           </p>
         </div>
 

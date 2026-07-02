@@ -184,13 +184,13 @@ export default async function ResultPage({
 
           <div className="space-y-4">
             <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-              休職中のロードマップ診断
+              いまの現在地の診断結果
             </span>
-            <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
+            <h1 className="whitespace-nowrap font-[var(--font-space-grotesk)] text-xl font-semibold tracking-tight text-slate-950 sm:text-5xl">
               あなたの現在地は{currentPhase.name}です
             </h1>
             <p className="text-base leading-7 text-slate-600 sm:text-lg sm:leading-8">
-              いまの状態を5つのフェーズで可視化し、次に向かう道筋を整理します。ここから、あなたの再始動を始めましょう。
+              いまの状態を5つのフェーズで整理しました。次に進むときの目安として、無理のない一歩を選んでいきましょう。
             </p>
           </div>
 
@@ -198,8 +198,35 @@ export default async function ResultPage({
             <div className="space-y-6">
               <div className="space-y-3">
                 <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-500">ロードマップ</p>
-                <div className="overflow-x-auto pb-1">
-                  <div className="flex min-w-[520px] items-center justify-between gap-2">
+                <div className="grid gap-2 sm:hidden">
+                  {Array.from({ length: 5 }).map((_, index) => {
+                    const phaseId = index + 1;
+                    const isCurrentPhase = phaseId === currentPhaseId;
+                    const isPast = phaseId < currentPhaseId;
+
+                    return (
+                      <div
+                        key={phaseId}
+                        className={`flex items-center justify-between rounded-full px-4 py-2 text-sm font-semibold transition ${
+                          isCurrentPhase
+                            ? "border-2 border-sky-500 bg-sky-50 text-sky-700"
+                            : isPast
+                              ? "border border-sky-300 bg-sky-100/50 text-sky-700"
+                              : "border border-slate-300 bg-slate-100 text-slate-500"
+                        }`}
+                      >
+                        <span>{phases[phaseId].name}</span>
+                        {isCurrentPhase ? (
+                          <span className="inline-flex rounded-full bg-sky-600 px-2 py-1 text-xs font-bold text-white">
+                            今ここ
+                          </span>
+                        ) : null}
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="hidden sm:block">
+                  <div className="flex items-center justify-between gap-2">
                   {Array.from({ length: 5 }).map((_, index) => {
                     const phaseId = index + 1;
                     const isCurrentPhase = phaseId === currentPhaseId;
@@ -228,7 +255,6 @@ export default async function ResultPage({
                   })}
                   </div>
                 </div>
-                <p className="text-xs text-slate-500 sm:hidden">横にスワイプして全フェーズを確認できます。</p>
               </div>
 
               <div className="border-t border-slate-200 pt-6">
@@ -300,7 +326,7 @@ export default async function ResultPage({
           <section className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
             <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">おすすめの次の一歩</h2>
             <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">
-              現在地は<span className="font-semibold text-sky-700">{nextStepGuide.stageLabel}</span>に近い状態です。今の状態に合う行動から、無理なく進めていきましょう。
+              現在地は<span className="font-semibold text-sky-700">{nextStepGuide.stageLabel}</span>に近い状態です。いまできそうなことから、ゆっくり進めていきましょう。
             </p>
 
             <ul className="mt-5 space-y-3">
@@ -318,7 +344,7 @@ export default async function ResultPage({
           {serviceGuide ? (
             <section className="rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
               <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">おすすめサービス</h2>
-              <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">{serviceGuide.message}</p>
+              <p className="mt-2 text-sm leading-7 text-slate-600 sm:text-base">いまの状態に合わせて、使いやすい選択肢をまとめました。</p>
 
               {([
                 { key: "career" as ServiceCategory, label: "キャリア相談" },
@@ -347,7 +373,7 @@ export default async function ResultPage({
 
           <section className="rounded-[2rem] border border-dashed border-slate-300 bg-white/70 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:p-8">
             <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950">診断結果を保存する</h2>
-            <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">診断結果の保存機能は準備中です。</p>
+            <p className="mt-3 text-sm leading-7 text-slate-600 sm:text-base">この機能は現在準備中です。使えるようになり次第ご案内します。</p>
           </section>
         </div>
       </section>

@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import { ColumnCard } from "@/components/columns/column-card";
+import { Hero } from "@/components/ui/hero";
 import { getLatestArticles } from "@/lib/articles";
 
 const highlights = [
@@ -54,40 +55,38 @@ export default function HomePage() {
         </Link>
       </header>
 
-      <section className="py-16 lg:py-20">
-        <div className="space-y-7">
-          <span className="inline-flex rounded-full border border-sky-200 bg-sky-50 px-3 py-1 text-sm font-medium text-sky-700">
-            いまの現在地を知る5分診断
-          </span>
-          <div className="space-y-5">
-            <h1 className="max-w-3xl font-[var(--font-space-grotesk)] text-4xl font-semibold leading-tight tracking-tight text-slate-950 sm:text-5xl lg:text-6xl">
-              復職した方がいいのか、まだ休んでもいいのか。
-              <span className="block text-sky-700">転職も含めて、いまの現在地を整理する5分診断です。</span>
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              休職中のあなたが、いま何を優先すると安心して進めるかを整理する5分診断です。現在地が見えると、次の一歩をあなたのペースで選びやすくなります。
-            </p>
-          </div>
-          <div className="space-y-3">
-            <Link
-              href="/diagnosis"
-              style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
-              className="inline-flex items-center justify-center rounded-full bg-[#1f365c] px-9 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2a4a79] sm:text-lg"
-            >
-              無料診断を始める
-            </Link>
-            <p className="text-sm text-slate-500">約5分・登録不要・完全無料。回答後すぐに結果が表示されます。</p>
-            <p className="text-sm text-slate-500">あなたのペースに合わせて、復職・転職・休養の次の一歩を整理できます。</p>
-          </div>
-          <div className="flex flex-wrap gap-2 text-sm text-slate-500">
-            {signals.map((signal) => (
-              <span key={signal} className="rounded-full bg-slate-100/80 px-3 py-1">
-                {signal}
-              </span>
-            ))}
-          </div>
+      <Hero
+        className="py-16 lg:py-20"
+        eyebrow="いまの現在地を知る5分診断"
+        title={
+          <>
+            復職した方がいいのか、まだ休んでもいいのか。
+            <span className="block text-sky-700">転職も含めて、いまの現在地を整理する5分診断です。</span>
+          </>
+        }
+        description="休職中のあなたが、いま何を優先すると安心して進めるかを整理する5分診断です。現在地が見えると、次の一歩をあなたのペースで選びやすくなります。"
+        actions={
+          <Link
+            href="/diagnosis"
+            style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
+            className="inline-flex items-center justify-center rounded-full bg-[#1f365c] px-9 py-4 text-base font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#2a4a79] sm:text-lg"
+          >
+            無料診断を始める
+          </Link>
+        }
+      >
+        <div className="space-y-3">
+          <p className="text-sm text-slate-500">約5分・登録不要・完全無料。回答後すぐに結果が表示されます。</p>
+          <p className="text-sm text-slate-500">あなたのペースに合わせて、復職・転職・休養の次の一歩を整理できます。</p>
         </div>
-      </section>
+        <div className="flex flex-wrap gap-2 text-sm text-slate-500">
+          {signals.map((signal) => (
+            <span key={signal} className="rounded-full bg-slate-100/80 px-3 py-1">
+              {signal}
+            </span>
+          ))}
+        </div>
+      </Hero>
 
       <section className="pb-10 lg:pb-12">
         <div className="rounded-[1.5rem] border border-slate-200/80 bg-white/70 p-5 sm:p-6">

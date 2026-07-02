@@ -4,3 +4,5 @@ out
 coverage
 .env*.local
 npm-debug.log*
+.vercel
+.env*

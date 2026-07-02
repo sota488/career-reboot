@@ -24,3 +24,10 @@ Design System
 ## Files
 
 - [Chapter 1 Brand Foundation](./chapter-1-brand-foundation.md)
+- [Component Change Policy v1.0](./component-change-policy-v1.md)
+- [Component Granularity Policy v1.0](./component-granularity-policy-v1.md)
+
+## Policies
+
+- [Component Change Policy v1.0](./component-change-policy-v1.md)
+- [Component Granularity Policy v1.0](./component-granularity-policy-v1.md)

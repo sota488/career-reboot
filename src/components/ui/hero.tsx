@@ -1,6 +1,6 @@
 import type { HTMLAttributes, ReactNode } from "react";
 
-type HeroProps = HTMLAttributes<HTMLElement> & {
+type HeroProps = Omit<HTMLAttributes<HTMLElement>, "title" | "children"> & {
   eyebrow?: ReactNode;
   title: ReactNode;
   description?: ReactNode;

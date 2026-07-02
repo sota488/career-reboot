@@ -102,10 +102,12 @@ export default function HomePage() {
       <section className="pb-14 lg:pb-16">
         <div className="rounded-[2rem] border border-sky-200 bg-white/90 p-6 shadow-md shadow-slate-900/10 backdrop-blur sm:p-8">
           <h2 className="font-[var(--font-space-grotesk)] text-2xl font-semibold text-slate-950 sm:text-3xl">
-            いまは、何から始めればいいのでしょうか。
+            まずは、いまの気持ちを整理しませんか。
           </h2>
           <p className="mt-3 text-slate-600">
-            5分で、あなたの現在地を整理できます。今の気持ちに近い選択肢を選ぶだけで、回復フェーズと次に取り組みやすい行動が分かります。
+            5分で、今の気持ちを整理できます。
+            <br className="hidden sm:block" />
+            今のあなたに合った、次の一歩を一緒に見つけましょう。
           </p>
           <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center">
             <Link
@@ -126,8 +128,6 @@ export default function HomePage() {
             <li>約5分で完了</li>
             <li>登録不要</li>
             <li>完全無料</li>
-            <li>結果はすぐ表示</li>
-            <li>いつでも中断可能</li>
           </ul>
         </div>
       </section>

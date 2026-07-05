@@ -24,13 +24,13 @@ export function Header() {
   const brandMenuId = "brand-navigation-menu";
 
   return (
-    <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 shadow-sm shadow-slate-900/5 backdrop-blur-md">
-      <Link href="/" className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
+    <header className="flex items-center justify-between gap-2 rounded-full border border-white/70 bg-white/70 px-3 py-2 shadow-sm shadow-slate-900/5 backdrop-blur-md sm:gap-0 sm:px-4 sm:py-3">
+      <Link href="/" className="whitespace-nowrap font-[var(--font-space-grotesk)] text-[11px] font-semibold uppercase tracking-[0.16em] text-sky-700 sm:text-sm sm:tracking-[0.3em]">
         Career Reboot
       </Link>
-      <nav className="flex flex-wrap items-center justify-end gap-x-4 gap-y-1 text-sm text-slate-600" aria-label="グローバルナビゲーション">
+      <nav className="flex shrink-0 items-center justify-end gap-x-2 whitespace-nowrap text-xs text-slate-600 sm:gap-x-4 sm:text-sm" aria-label="グローバルナビゲーション">
         {headerPrimaryNavigation.map((item) => (
-          <Link key={item.href} href={item.href} className="transition hover:text-slate-900">
+          <Link key={item.href} href={item.href} className="whitespace-nowrap transition hover:text-slate-900">
             {item.label}
           </Link>
         ))}
@@ -52,10 +52,10 @@ export function Header() {
                 setIsBrandOpen(false);
               }
             }}
-            className="inline-flex items-center gap-1 transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50 focus-visible:ring-offset-2"
+            className="inline-flex items-center gap-0.5 whitespace-nowrap transition hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500/50 focus-visible:ring-offset-2 sm:gap-1"
           >
             <span>{headerBrandNavigation.label}</span>
-            <span aria-hidden className={`text-[10px] transition ${isBrandOpen ? "rotate-180" : ""}`}>
+            <span aria-hidden className={`text-[9px] transition sm:text-[10px] ${isBrandOpen ? "rotate-180" : ""}`}>
               ▾
             </span>
           </button>

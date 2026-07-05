@@ -1,4 +1,5 @@
 ﻿import { ResultViewEvent } from "@/components/analytics/result-view-event";
+import { Header } from "@/components/layout/Header";
 import { ServiceCard } from "@/components/result/service-card";
 import { phaseServiceGuides, type ServiceCategory } from "@/lib/services";
 import Link from "next/link";
@@ -164,14 +165,7 @@ export default async function ResultPage({
 
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-8 lg:px-8">
-      <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 backdrop-blur-md shadow-sm shadow-slate-900/5">
-        <Link href="/" className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
-          Career Reboot
-        </Link>
-        <Link href="/diagnosis" className="text-sm font-medium text-slate-600 hover:text-slate-950">
-          もう一度診断する
-        </Link>
-      </header>
+      <Header />
 
       <section className="py-10 lg:py-20">
         <div className="max-w-3xl space-y-6">

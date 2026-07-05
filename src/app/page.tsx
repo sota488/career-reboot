@@ -1,5 +1,6 @@
 ﻿import Link from "next/link";
 import { ColumnCard } from "@/components/columns/column-card";
+import { Header } from "@/components/layout/Header";
 import { Hero } from "@/components/ui/hero";
 import { getLatestArticles } from "@/lib/articles";
 
@@ -40,20 +41,7 @@ export default function HomePage() {
 
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-6 py-8 lg:px-8">
-      <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 backdrop-blur-md shadow-sm shadow-slate-900/5">
-        <div>
-          <p className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
-            Career Reboot
-          </p>
-        </div>
-        <Link
-          href="/diagnosis"
-          style={{ color: "#ffffff", WebkitTextFillColor: "#ffffff" }}
-          className="rounded-full bg-[#1f365c] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#2a4a79]"
-        >
-          無料診断を始める
-        </Link>
-      </header>
+      <Header />
 
       <Hero
         className="py-16 lg:py-20"

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ColumnCard } from "@/components/columns/column-card";
+import { Header } from "@/components/layout/Header";
 import { getAllArticles } from "@/lib/articles";
 
 export const metadata: Metadata = {
@@ -13,14 +13,7 @@ export default function ColumnsPage() {
 
   return (
     <main className="mx-auto min-h-screen max-w-6xl px-6 py-8 lg:px-8">
-      <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 shadow-sm shadow-slate-900/5 backdrop-blur-md">
-        <Link href="/" className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
-          Career Reboot
-        </Link>
-        <Link href="/diagnosis" className="rounded-full bg-[#1f365c] px-4 py-2 text-sm font-medium text-white transition hover:bg-[#2a4a79]">
-          診断を始める
-        </Link>
-      </header>
+      <Header />
 
       <section className="py-10 sm:py-14 lg:py-20">
         <div className="max-w-3xl space-y-4">

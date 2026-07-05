@@ -4,6 +4,7 @@ import { trackDiagnosisComplete, trackDiagnosisStart } from "@/lib/analytics";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import { Header } from "@/components/layout/Header";
 import { questions, ratingDescriptions, type DiagnosisCategory } from "./questions";
 
 const categoryLabels: Record<DiagnosisCategory, string> = {
@@ -136,12 +137,7 @@ export default function DiagnosisPage() {
 
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-8 lg:px-8">
-      <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 backdrop-blur-md shadow-sm shadow-slate-900/5">
-        <Link href="/" className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
-          Career Reboot
-        </Link>
-        <p className="text-sm font-medium text-slate-500">20問 / 5段階評価</p>
-      </header>
+      <Header />
 
       <section className="py-8 sm:py-14 lg:py-20">
         <div className="max-w-2xl space-y-4">

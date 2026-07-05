@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { ContentRenderer } from "@/components/content/content-renderer";
+import { Header } from "@/components/layout/Header";
 import { brandBook } from "@/content/brand";
 
 export const metadata: Metadata = {
@@ -35,14 +35,7 @@ export const metadata: Metadata = {
 export default function BrandBookPage() {
   return (
     <main className="mx-auto min-h-screen max-w-5xl px-6 py-8 lg:px-8">
-      <header className="flex items-center justify-between rounded-full border border-white/70 bg-white/70 px-4 py-3 shadow-sm shadow-slate-900/5 backdrop-blur-md">
-        <Link href="/" className="font-[var(--font-space-grotesk)] text-sm font-semibold uppercase tracking-[0.3em] text-sky-700">
-          Career Reboot
-        </Link>
-        <Link href="/columns" className="rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-medium text-slate-700 transition hover:border-slate-400 hover:bg-slate-50">
-          コラム
-        </Link>
-      </header>
+      <Header />
 
       <article className="mx-auto mt-8 max-w-[44rem] rounded-[2rem] border border-white/80 bg-white/85 p-6 shadow-sm shadow-slate-900/5 backdrop-blur sm:mt-10 sm:p-8">
         <h1 className="font-[var(--font-space-grotesk)] text-3xl font-semibold tracking-tight text-slate-950 sm:text-5xl">

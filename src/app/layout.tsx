@@ -1,8 +1,8 @@
 ﻿import type { Metadata } from "next";
 import { Manrope, Space_Grotesk } from "next/font/google";
-import Link from "next/link";
 import { Suspense } from "react";
 import { AnalyticsScripts } from "@/components/analytics/analytics-scripts";
+import { Footer } from "@/components/layout/Footer";
 import { PageViewTracker } from "@/components/analytics/page-view-tracker";
 import "./globals.css";
 
@@ -64,24 +64,7 @@ export default function RootLayout({
           <PageViewTracker />
         </Suspense>
         <AnalyticsScripts />
-        <footer className="border-t border-slate-200/80 bg-white/75 px-6 py-6 text-slate-600 backdrop-blur sm:px-8">
-          <div className="mx-auto flex max-w-6xl flex-col gap-1 text-sm">
-            <p className="font-[var(--font-space-grotesk)] font-semibold tracking-[0.08em] text-slate-700">Career Reboot β</p>
-            <p>休職中のロードマップ診断</p>
-            <div className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-xs text-slate-500">
-              <Link href="/about" className="transition hover:text-slate-700">
-                About
-              </Link>
-              <Link href="/brand" className="transition hover:text-slate-700">
-                Brand Book
-              </Link>
-              <Link href="/columns" className="transition hover:text-slate-700">
-                コラム
-              </Link>
-            </div>
-            <p className="text-xs text-slate-500">© Career Reboot</p>
-          </div>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

@@ -23,6 +23,18 @@ export type Article = {
 
 const articles: Article[] = [
   {
+    slug: "before-rushing-to-change-jobs",
+    title: "転職を急ぐ前に、自分の状態を見るという選択",
+    description:
+      "休職中に転職を急いでいた実体験から、焦りで動く前に自分の状態と働き方を見直す大切さを整理した記事です。",
+    publishedAt: "2026-07-06",
+    category: ARTICLE_CATEGORIES.EXPERIENCE,
+    tags: ["休職", "転職", "働き方", "自己理解", "体験談"],
+    thumbnail: "/ogp.png",
+    readingTime: 8,
+    featured: false,
+  },
+  {
     slug: "nothing-was-the-hardest",
     title: "休職中に「何もしない」ことが一番苦しかった話",
     description:

@@ -1,8 +1,10 @@
 import type { ComponentType } from "react";
+import BeforeRushingToChangeJobsArticle from "@/content/columns/before-rushing-to-change-jobs";
 import FirstWeekAfterLeaveRegretArticle from "@/content/columns/first-week-after-leave-regret";
 import NothingWasTheHardestArticle from "@/content/columns/nothing-was-the-hardest";
 
 const articleContentMap = {
+  "before-rushing-to-change-jobs": BeforeRushingToChangeJobsArticle,
   "nothing-was-the-hardest": NothingWasTheHardestArticle,
   "first-week-after-leave-regret": FirstWeekAfterLeaveRegretArticle,
 } as const;

@@ -1,3 +1,5 @@
+"use client";
+
 import type { HTMLAttributes, KeyboardEvent, MouseEvent } from "react";
 
 export type CardVariant = "default" | "elevated" | "outline";

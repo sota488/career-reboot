@@ -1,7 +1,17 @@
+"use client";
+
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { LandingFooter } from "@/components/landing/landing-footer";
 import { globalNavigation } from "@/constants/navigation";
 
 export function Footer() {
+  const pathname = usePathname();
+
+  if (pathname === "/") {
+    return <LandingFooter />;
+  }
+
   return (
     <footer className="border-t border-slate-200/80 bg-white/75 px-6 py-6 text-slate-600 backdrop-blur sm:px-8">
       <div className="mx-auto flex max-w-6xl flex-col gap-1 text-sm">

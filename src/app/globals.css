@@ -18,6 +18,13 @@
   --color-warning: #f6c453;
   --color-error: #e57373;
 
+  /* Landing page v2 tokens */
+  --color-landing-surface: #f3f8fd;
+  --color-landing-surface-strong: #e8f3fc;
+  --color-landing-text-muted: #8bb8d6;
+  --color-landing-accent: #5b97c2;
+  --color-landing-card: #f5f9fd;
+
   /* Typography tokens */
   --font-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic UI", sans-serif;
   --font-en: "Inter", "Segoe UI", sans-serif;
@@ -85,6 +92,11 @@
   --color-cr-success: var(--color-success);
   --color-cr-warning: var(--color-warning);
   --color-cr-error: var(--color-error);
+  --color-cr-landing-surface: var(--color-landing-surface);
+  --color-cr-landing-surface-strong: var(--color-landing-surface-strong);
+  --color-cr-landing-text-muted: var(--color-landing-text-muted);
+  --color-cr-landing-accent: var(--color-landing-accent);
+  --color-cr-landing-card: var(--color-landing-card);
 
   --font-cr-jp: var(--font-jp);
   --font-cr-en: var(--font-en);

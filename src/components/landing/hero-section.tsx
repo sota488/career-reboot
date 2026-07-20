@@ -1,9 +1,10 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export function HeroSection() {
   return (
     <section className="bg-[var(--color-landing-surface)] pb-10 pt-12 sm:pb-14 sm:pt-16 lg:pb-16 lg:pt-20">
-      <div className="mx-auto max-w-6xl px-5 sm:px-8">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-5 sm:px-8 lg:grid-cols-[minmax(0,1.05fr)_minmax(22rem,0.95fr)] lg:gap-12">
         <div className="max-w-3xl">
           <p className="text-sm font-medium text-[var(--color-landing-text-muted)]">今のあなたから、始めていい。</p>
           <h1 className="mt-5 font-[var(--font-space-grotesk)] text-4xl font-semibold leading-[1.2] tracking-tight text-[var(--color-primary)] sm:text-5xl lg:text-6xl">
@@ -29,6 +30,16 @@ export function HeroSection() {
             <li>♧ 登録不要</li>
           </ul>
         </div>
+        <figure className="mx-auto w-full max-w-md lg:max-w-none" aria-label="現在地を整理しながら次の一歩へ進む二人のイラスト">
+          <Image
+            src="/landing/hero-illustration-v2.png"
+            alt="朝日の下で二人が一緒に次の一歩へ進むイラスト"
+            width={1369}
+            height={1149}
+            priority
+            className="h-auto w-full"
+          />
+        </figure>
       </div>
     </section>
   );
